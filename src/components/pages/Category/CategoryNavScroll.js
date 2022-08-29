@@ -19,25 +19,41 @@ const getActiveElement = (elements, topOffset) => {
 }
 
 const CategoryNavScrollButtonView = styled.button`
-  font-family: ${(props) => props.theme.fonts.preface.family};
-  font-weight: ${(props) => props.theme.fonts.preface.weight};
-  letter-spacing: ${(props) => props.theme.fonts.preface.letterSpacing};
-  text-transform: ${(props) => props.theme.fonts.preface.textTransform};
-  -webkit-font-smoothing: ${(props) => props.theme.fonts.preface.fontSmoothing};
-  font-size: ${(props) => props.theme.fonts.preface.fontSize};
+  height: ${(props) => props.theme.layout.navHeight};
+  font-family: ${(props) => props.theme.fonts.headings.family};
+  font-weight: ${(props) => props.theme.fonts.headings.weight};
+  letter-spacing: ${(props) => props.theme.fonts.headings.letterSpacing};
+  text-transform: ${(props) => props.theme.fonts.headings.textTransform};
+  -webkit-font-smoothing: ${(props) =>
+    props.theme.fonts.headings.fontSmoothing};
+  font-weight: ${(props) =>
+    props.active ? props.theme.fonts.headings.weight : '500'};
   color: ${(props) =>
-    props.theme.links.light[props.active ? 'hover' : 'color']};
-  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
-    font-size: ${(props) => props.theme.fonts.sizes.small};
+    props.active ? props.theme.colors.primary : props.inactiveColor};
+  font-size: ${(props) => props.theme.fonts.sizes.xBig};
+  border: 0.6rem solid transparent;
+  border-left: 0;
+  border-right: 0;
+  border-bottom-color: ${(props) =>
+    props.active ? props.theme.colors.primary : 'transparent'};
+  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    font-size: ${(props) => props.theme.fonts.sizes.big};
+    height: ${(props) => props.theme.layout.navHeightMobile};
+    border-width: 0.3rem;
   }
 
-  &:hover,
-  &:focus {
-    color: ${(props) => props.theme.links.light.hover};
-  }
+  // &:hover,
+  // &:focus {
+  //   color: ${(props) => props.theme.links.light.hover};
+  // }
 `
 
-const CategoryNavScrollButton = ({ name, active, offset = 0 }) => {
+const CategoryNavScrollButton = ({
+  name,
+  active,
+  inactiveColor,
+  offset = 0,
+}) => {
   const id = slugify(name)
 
   const onClick = (evt) => {
@@ -56,7 +72,11 @@ const CategoryNavScrollButton = ({ name, active, offset = 0 }) => {
   }
 
   return (
-    <CategoryNavScrollButtonView onClick={onClick} active={active}>
+    <CategoryNavScrollButtonView
+      onClick={onClick}
+      active={active}
+      inactiveColor={inactiveColor}
+    >
       {name}
     </CategoryNavScrollButtonView>
   )
@@ -67,7 +87,7 @@ const CategoryNavScrollView = styled.div`
   overflow-x: scroll;
   transition: all 500ms ease;
   text-align: center;
-  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+  @media (max-width: 1480px) {
     text-align: left;
   }
 
@@ -90,8 +110,10 @@ const CategoryNavScrollView = styled.div`
       display: block;
       flex-shrink: 0;
       font-size: ${(props) => props.theme.fonts.preface.fontSize};
+      height: ${(props) => props.theme.layout.navHeight};
       padding: 0 0 0 ${(props) => props.theme.layout.padding};
       @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+        height: ${(props) => props.theme.layout.navHeightMobile};
         padding-left: ${(props) => props.theme.layout.paddingMobile};
         // padding-right: ${(props) => props.theme.layout.paddingMobile};
         padding-right: 1rem;
@@ -122,6 +144,8 @@ const smoothHorizontalScrolling = (container, time, amount, start) => {
 const shs = (e, sc, eAmt, start) => {
   e.scrollLeft = eAmt * sc + start
 }
+
+const colors = ['#5c88da', '#ed8b00', '#babc16', '#d14124']
 
 const CategoryNavScroll = ({ items, offset = 0 }) => {
   const navRef = useRef(null)
@@ -177,6 +201,7 @@ const CategoryNavScroll = ({ items, offset = 0 }) => {
                 name={name}
                 offset={navOffset}
                 active={activeId === sectionId}
+                inactiveColor={colors[index % 4]}
               />
             </li>
           )

@@ -36,12 +36,13 @@ const MenuHeaderTitleRevenueCenter = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.4rem 0 0;
-  color: ${(props) => props.theme.buttons.colors.header.color};
+  margin: 0.8rem 0 -0.3rem 1rem;
+  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    margin-top: 0.3rem;
+  }
 
   > span {
     display: inline-block;
-    color: ${(props) => props.theme.buttons.colors.header.color};
   }
 `
 
@@ -52,18 +53,19 @@ const MenuHeaderName = styled.span`
   text-overflow: ellipsis;
 
   span {
-    color: ${(props) => props.theme.buttons.colors.header.color};
-    font-size: ${(props) => props.theme.fonts.sizes.big};
+    color: ${(props) => props.theme.buttons.colors.headerHover.color};
+    font-size: ${(props) => props.theme.fonts.sizes.xxBig};
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-      font-size: ${(props) => props.theme.fonts.sizes.main};
+      font-size: ${(props) => props.theme.fonts.sizes.xBig};
     }
   }
 `
 
 const MenuHeaderDropdown = styled.span`
-  margin: 0.2rem 0 0 0.2rem;
-  width: 1.6rem;
-  height: 1.6rem;
+  margin: -0.2rem 0 0 0.2rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  color: ${(props) => props.theme.buttons.colors.headerHover.color};
 `
 
 const MenuHeaderTitle = ({

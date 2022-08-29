@@ -37,7 +37,7 @@ const SidebarView = styled.aside`
   right: 0;
   width: 48rem;
   max-width: 100%;
-  background-color: ${(props) => props.theme.bgColors.primary};
+  background-color: ${(props) => props.theme.bgColors.tertiary};
 
   > div {
     position: relative;
@@ -53,7 +53,7 @@ const SidebarView = styled.aside`
 const SidebarHeader = styled.div`
   width: 100%;
   padding: 2rem;
-  background-color: ${(props) => props.theme.bgColors.primary};
+  background-color: ${(props) => props.theme.bgColors.tertiary};
 
   p {
     line-height: ${(props) => props.theme.fonts.body.lineHeight};
@@ -86,7 +86,7 @@ const SidebarFooter = styled.div`
   flex-shrink: 0;
   width: 100%;
   height: 7rem;
-  background-color: ${(props) => props.theme.bgColors.primary};
+  background-color: ${(props) => props.theme.bgColors.tertiary};
 `
 
 const SidebarButtons = styled.div`

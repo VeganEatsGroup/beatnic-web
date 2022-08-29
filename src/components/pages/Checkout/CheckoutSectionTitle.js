@@ -3,16 +3,16 @@ import propTypes from 'prop-types'
 import { Heading } from '@open-tender/components'
 
 const CheckoutSectionTitleView = styled.div`
-  margin: 0.9rem 0 0 -0.1rem;
+  margin: 1.2rem 0 -0.2rem -0.1rem;
   @media (max-width: ${(props) => props.theme.breakpoints.narrow}) {
-    margin-top: 0.8rem;
+    margin: 1rem 0 -0.2rem -0.1rem;
   }
 `
 
 const CheckoutSectionTitleText = styled(Heading)`
-  font-size: ${(props) => props.theme.fonts.sizes.big};
+  font-size: ${(props) => props.theme.fonts.sizes.xBig};
   @media (max-width: ${(props) => props.theme.breakpoints.narrow}) {
-    font-size: ${(props) => props.theme.fonts.sizes.main};
+    font-size: ${(props) => props.theme.fonts.sizes.xBig};
   }
 `
 

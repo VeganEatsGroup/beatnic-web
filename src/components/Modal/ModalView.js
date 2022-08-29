@@ -5,7 +5,7 @@ const ModalView = styled('div')`
   width: 48rem;
   max-width: 90%;
   overflow: hidden;
-  background-color: ${(props) => props.theme.bgColors.primary};
+  background-color: ${(props) => props.theme.bgColors.tertiary};
   border-radius: ${(props) => props.theme.border.radius};
   margin: ${(props) => props.theme.layout.padding};
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
