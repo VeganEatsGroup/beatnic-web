@@ -1,6 +1,6 @@
 {
   "name": "beatnic-web",
-  "version": "4.2.37",
+  "version": "4.2.39",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.6.0",

@@ -150,11 +150,13 @@ const RequestedAtDateTime = ({
     ? timeOptionsAsap.find((i) => !i.disabled)
     : null
   const firstMinutes = firstOrderableTime ? firstOrderableTime.value : null
-  const defaultTime = timeOptionsAsap.find((i) => i.value === firstMinutes)
+  const defaultTime = timeOptionsAsap
+    ? timeOptionsAsap.find((i) => i.value === firstMinutes)
+    : null
   const orderTime = timeOptionsAsap
     ? timeOptionsAsap.find((i) => i.value === time) || defaultTime
     : null
-  const isAsap = orderTime.value === 'asap'
+  const isAsap = orderTime && orderTime.value === 'asap' ? true : false
   const orderMsg =
     orderDate && orderTime
       ? isAsap
