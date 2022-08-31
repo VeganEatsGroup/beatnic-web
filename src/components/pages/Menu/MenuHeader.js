@@ -38,7 +38,7 @@ const MenuHeaderTitleRevenueCenter = styled.button`
   align-items: center;
   margin: 0.8rem 0 -0.3rem 1rem;
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    margin-top: 0.3rem;
+    margin-top: 0rem;
   }
 
   > span {
@@ -47,16 +47,19 @@ const MenuHeaderTitleRevenueCenter = styled.button`
 `
 
 const MenuHeaderName = styled.span`
-  max-width: 20rem;
+  max-width: 36rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    max-width: 26rem;
+  }
 
   span {
     color: ${(props) => props.theme.buttons.colors.headerHover.color};
     font-size: ${(props) => props.theme.fonts.sizes.xxBig};
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-      font-size: ${(props) => props.theme.fonts.sizes.xBig};
+      font-size: ${(props) => props.theme.fonts.sizes.big};
     }
   }
 `
@@ -66,6 +69,9 @@ const MenuHeaderDropdown = styled.span`
   width: 2.4rem;
   height: 2.4rem;
   color: ${(props) => props.theme.buttons.colors.headerHover.color};
+  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    margin-top: 0.2rem;
+  }
 `
 
 const MenuHeaderTitle = ({

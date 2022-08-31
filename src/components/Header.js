@@ -48,7 +48,7 @@ const HeaderTitle = styled.div`
 
   > span {
     display: block;
-    max-width: 26rem;
+    max-width: 36rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -61,6 +61,7 @@ const HeaderTitle = styled.div`
     font-size: ${(props) => props.theme.fonts.sizes.big};
     color: ${(props) => props.theme.buttons.colors.header.color};
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+      max-width: 26rem;
       font-size: ${(props) => props.theme.fonts.sizes.main};
     }
   }
