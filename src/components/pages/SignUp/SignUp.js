@@ -26,27 +26,40 @@ import {
   PageContainer,
   PageContent,
 } from '../..'
+import styled from '@emotion/styled'
+
+const ThanxTermsView = styled.div`
+  p + p {
+    margin: 2rem 0 0;
+  }
+`
 
 export const ThanxTerms = () => (
-  <p>
-    By signing up you agree to our{' '}
-    <a
-      href="https://app.thanx.com/privacy"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      privacy policy
-    </a>{' '}
-    and our{' '}
-    <a
-      href="https://app.thanx.com/terms"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      terms of service
-    </a>
-    .
-  </p>
+  <ThanxTermsView>
+    <p>
+      By signing up you agree to our{' '}
+      <a
+        href="https://app.thanx.com/privacy"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        privacy policy
+      </a>{' '}
+      and our{' '}
+      <a
+        href="https://app.thanx.com/terms"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        terms of service
+      </a>
+      .
+    </p>
+    <p>
+      By entering your phone number, you agree to receive marketing messages
+      from Beatnic.
+    </p>
+  </ThanxTermsView>
 )
 
 const useQuery = () => {

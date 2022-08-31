@@ -21,6 +21,7 @@ import {
 
 import { selectBrand, selectContent } from '../../../slices'
 import { Content, HeaderCheckout, Main, PageContainer, PageTitle } from '../..'
+import { ThanxTerms } from '../SignUp/SignUp'
 
 const defaultText = {
   title: 'Sign up or checkout as a guest',
@@ -32,6 +33,10 @@ const CheckoutSignUpEmail = styled('div')`
 
   p {
     font-size: ${(props) => props.theme.fonts.sizes.small};
+  }
+
+  & > p {
+    margin: 0 0 2rem;
   }
 `
 
@@ -88,6 +93,7 @@ const CheckoutSignUp = () => {
                     Go back & enter a different email address
                   </ButtonLink>
                 </p>
+                {has_thanx && <ThanxTerms />}
               </CheckoutSignUpEmail>
             </PageTitle>
             <FormWrapper>
