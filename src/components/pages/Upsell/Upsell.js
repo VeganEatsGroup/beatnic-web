@@ -8,7 +8,7 @@ import {
   selectMenu,
   selectMenuSlug,
 } from '@open-tender/redux'
-import { makeMenuItemLookup } from '@open-tender/js'
+import { makeMenuItemLookup, makeUpsellItems } from '@open-tender/js'
 import {
   Body,
   ButtonLink,
@@ -122,10 +122,10 @@ const Upsell = () => {
     []
   )
   const uniqueIds = [...new Set(upsellItemIds)]
-  const filtered = uniqueIds.filter(
+  const itemIds = uniqueIds.filter(
     (id) => !cartIds.includes(id) && !soldOut.includes(id)
   )
-  const upsellItems = filtered.map((id) => itemLookup[id])
+  const upsellItems = makeUpsellItems(itemIds, itemLookup)
   const hasItems = upsellItems.length > 0
   const path = auth ? '/checkout' : '/checkout/guest'
   const skip = !show || !hasItems
@@ -159,7 +159,7 @@ const Upsell = () => {
                 {upsellItems.map((item) => (
                   <UpsellItemsWrapper key={item.id} count={upsellItems.length}>
                     <UpsellItem
-                      menuItem={item}
+                      orderItem={item}
                       showDesc={false}
                       addCallback={() => setItemAdded(true)}
                     />

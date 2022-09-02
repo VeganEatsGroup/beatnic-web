@@ -8,7 +8,6 @@ import {
   selectSelectedAllergenNames,
   showNotification,
 } from '@open-tender/redux'
-import { makeOrderItem } from '@open-tender/js'
 import { useBuilder, useOrderItem } from '@open-tender/hooks'
 import { ButtonStyled, CardMenuItem } from '@open-tender/components'
 import { useDispatch, useSelector } from 'react-redux'
@@ -51,7 +50,7 @@ const UpsellItemSizes = styled.div`
   }
 `
 
-const UpsellItem = ({ menuItem, addCallback, showDesc = true }) => {
+const UpsellItem = ({ orderItem, addCallback, showDesc = true }) => {
   const dispatch = useDispatch()
   const theme = useTheme()
   const hasBox = theme.cards.menuItem.bgColor !== 'transparent'
@@ -59,7 +58,6 @@ const UpsellItem = ({ menuItem, addCallback, showDesc = true }) => {
   const allergenAlerts = useSelector(selectSelectedAllergenNames)
   const { soldOut } = useSelector(selectMenu)
   const displaySettings = useSelector(selectDisplaySettings)
-  const orderItem = makeOrderItem(menuItem)
   const { item: builtItem, toggleOption } = useBuilder(orderItem)
   const {
     name,
@@ -101,6 +99,8 @@ const UpsellItem = ({ menuItem, addCallback, showDesc = true }) => {
       if (addCallback) addCallback()
     }
   }, [hasSize, isIncomplete, builtItem, addCallback, dispatch])
+
+  if (isIncomplete && !sizeGroup) return null
 
   return (
     <UpsellItemView>

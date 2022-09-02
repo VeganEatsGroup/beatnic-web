@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import styled from '@emotion/styled'
 import { selectCartIds, selectMenu } from '@open-tender/redux'
-import { makeMenuItemLookup } from '@open-tender/js'
+import { makeMenuItemLookup, makeUpsellItems } from '@open-tender/js'
 import { Body, Heading } from '@open-tender/components'
 import { selectContentSection } from '../slices'
 import UpsellItem from './UpsellItem'
@@ -81,10 +81,10 @@ const UpsellItems = () => {
     []
   )
   const uniqueIds = [...new Set(upsellItemIds)]
-  const filtered = uniqueIds.filter(
+  const itemIds = uniqueIds.filter(
     (id) => !cartIds.includes(id) && !soldOut.includes(id)
   )
-  const upsellItems = filtered.map((id) => itemLookup[id])
+  const upsellItems = makeUpsellItems(itemIds, itemLookup)
 
   if (!upsellItems.length) return null
 
@@ -97,7 +97,7 @@ const UpsellItems = () => {
       <UpsellItemsItems className="centered">
         {upsellItems.map((item) => (
           <UpsellItemsItem key={item.id}>
-            <UpsellItem menuItem={item} showDesc={false} />
+            <UpsellItem orderItem={item} showDesc={false} />
           </UpsellItemsItem>
         ))}
       </UpsellItemsItems>

@@ -1,10 +1,10 @@
-import { useContext, useMemo } from 'react'
+import { useContext, useEffect, useMemo } from 'react'
 import propTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import styled from '@emotion/styled'
 import { setCurrentItem } from '@open-tender/redux'
-import { makeMenuItemLookup } from '@open-tender/js'
+import { makeMenuItemLookup, makeUpsellItems } from '@open-tender/js'
 import { Body, ButtonLink, Heading } from '@open-tender/components'
 import { UpsellItem } from '../..'
 import { MenuContext } from '../Menu/Menu'
@@ -108,14 +108,22 @@ const MenuItemUpsell = ({ showUpsell, setShowUpsell, upsellItemIds }) => {
   const upsells = useSelector(selectContentSection('upsells'))
   const { show, title, subtitle, decline } = upsells?.item || {}
   const itemLookup = useMemo(() => makeMenuItemLookup(categories), [categories])
-  const menuItems = upsellItemIds.map((id) => itemLookup[id])
+  const upsellItems = makeUpsellItems(upsellItemIds, itemLookup)
+  const skipUpsell = upsellItems.length === 0 || !show
 
   const backToMenu = () => {
     setShowUpsell(false)
     setTimeout(() => dispatch(setCurrentItem(null)), 200)
   }
 
-  if (!show) return null
+  useEffect(() => {
+    if (showUpsell && skipUpsell) {
+      setShowUpsell(false)
+      dispatch(setCurrentItem(null))
+    }
+  }, [showUpsell, skipUpsell, setShowUpsell, dispatch])
+
+  if (skipUpsell) return null
 
   return (
     <>
@@ -137,13 +145,13 @@ const MenuItemUpsell = ({ showUpsell, setShowUpsell, upsellItemIds }) => {
               </MenuItemUpsellHeader>
               <MenuItemUpsellContainer>
                 <MenuItemUpsellItems className="centered">
-                  {menuItems.map((item, index) => (
+                  {upsellItems.map((item, index) => (
                     <MenuItemUpsellItem
-                      count={menuItems.length}
+                      count={upsellItems.length}
                       key={`${item.id}-${index}`}
                     >
                       <UpsellItem
-                        menuItem={item}
+                        orderItem={item}
                         addCallback={backToMenu}
                         showDesc={isBrowser}
                       />
