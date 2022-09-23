@@ -29,7 +29,7 @@ const CategoryNavScrollButtonView = styled.button`
   font-weight: ${(props) =>
     props.active ? props.theme.fonts.headings.weight : '500'};
   color: ${(props) =>
-    props.active ? props.theme.colors.primary : props.inactiveColor};
+    props.active ? props.theme.colors.light : props.inactiveColor};
   font-size: ${(props) => props.theme.fonts.sizes.xBig};
   border: 0.6rem solid transparent;
   border-left: 0;

@@ -29,6 +29,9 @@ import {
 import styled from '@emotion/styled'
 
 const ThanxTermsView = styled.div`
+  max-width: 54rem;
+  margin: 0 auto;
+
   p + p {
     margin: 2rem 0 0;
   }
@@ -44,20 +47,16 @@ export const ThanxTerms = () => (
         target="_blank"
       >
         privacy policy
-      </a>{' '}
-      and our{' '}
+      </a>
+      , our{' '}
       <a
         href="https://app.thanx.com/terms"
         rel="noopener noreferrer"
         target="_blank"
       >
         terms of service
-      </a>
-      .
-    </p>
-    <p>
-      By entering your phone number, you agree to receive marketing messages
-      from Beatnic.
+      </a>{' '}
+      and to receive marketing messages from Beatnic.
     </p>
   </ThanxTermsView>
 )

@@ -44,8 +44,12 @@ const CheckoutSubmit = () => {
           <Message
             as="div"
             size="small"
-            color="alert"
-            style={{ width: '100%', padding: '1rem 1.5rem' }}
+            color="error"
+            style={{
+              width: '100%',
+              padding: '0',
+              backgroundColor: 'transparent',
+            }}
           >
             There is a balance of ${amountRemaining.toFixed(2)} remaining on
             your order. Please add a payment above.

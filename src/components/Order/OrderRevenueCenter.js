@@ -1,11 +1,21 @@
 import React from 'react'
 import propTypes from 'prop-types'
+import styled from '@emotion/styled'
 
-const OrderRevenueCenter = ({ revenueCenter }) => {
+const OrderRevenueCenterName = styled.p`
+  color: ${(props) =>
+    props.serviceType === 'PICKUP'
+      ? props.theme.links.primary.color
+      : 'inherit'};
+`
+
+const OrderRevenueCenter = ({ revenueCenter, serviceType }) => {
   const { address: rcAddr } = revenueCenter || {}
   return (
     <>
-      <p>{revenueCenter.name}</p>
+      <OrderRevenueCenterName serviceType={serviceType}>
+        {revenueCenter.name}
+      </OrderRevenueCenterName>
       <p>
         {rcAddr.street}, {rcAddr.city}, {rcAddr.state} {rcAddr.postal_code}
       </p>

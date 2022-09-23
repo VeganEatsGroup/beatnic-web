@@ -272,7 +272,7 @@ const Checkout = () => {
             <CheckoutContent>
               <CheckoutTitle>
                 <h1>{config.title}</h1>
-                <p>{config.subtitle}</p>
+                {!hasCustomer && <p>{config.subtitle}</p>}
                 <CheckoutCancelEdit />
                 {formError && <FormError errMsg={formError} />}
                 {addressError && <FormError errMsg={addressError} />}

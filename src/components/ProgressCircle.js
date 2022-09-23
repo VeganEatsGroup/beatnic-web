@@ -20,11 +20,11 @@ const ProgressCirlceView = styled('div')`
   }
 
   path:last-of-type {
-    stroke: ${(props) => props.theme.colors.primary};
+    stroke: ${(props) => props.theme.links.primary.color};
   }
 
   path:first-of-type {
-    stroke: ${(props) => props.theme.bgColors.tertiary};
+    stroke: ${(props) => props.theme.colors.primary};
   }
 `
 

@@ -10,6 +10,7 @@ import GlobalStyles from './GlobalStyles'
 import AppRoutes from './components/AppRoutes'
 import {
   Alerts,
+  CartButton,
   // CartButton,
   ErrorBoundary,
   Modal,
@@ -79,7 +80,7 @@ class App extends React.Component {
                     <Modal />
                     <Alerts />
                     <Notifications />
-                    {/* <CartButton /> */}
+                    <CartButton />
                     <AppRoutes />
                     <Sidebar />
                     <Nav />

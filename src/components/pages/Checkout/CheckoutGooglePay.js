@@ -95,7 +95,7 @@ const CheckoutGooglePay = ({ amount, error, addTender, removeTender }) => {
         environment="PRODUCTION"
         buttonSizeMode="fill"
         buttonType="plain"
-        buttonColor="white"
+        // buttonColor="white"
         paymentRequest={paymentRequest}
         onLoadPaymentData={onLoadPaymentData}
       />

@@ -149,7 +149,7 @@ const CheckoutPromoCodes = () => {
                   onClick={applyPromoCode}
                   disabled={!promoCode || pendingPromoCode ? true : false}
                   size="small"
-                  color="secondary"
+                  // color="secondary"
                 >
                   {pendingPromoCode ? 'Applying...' : 'Apply'}
                 </ButtonStyled>

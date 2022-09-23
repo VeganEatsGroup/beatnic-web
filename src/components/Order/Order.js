@@ -38,7 +38,7 @@ import OrderPrep from './OrderPrep'
 
 const OrderView = styled.div`
   margin: 4rem auto;
-  max-width: 54rem;
+  max-width: 64rem;
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     margin: 3rem auto;
   }
@@ -66,6 +66,13 @@ const OrderTitle = styled(Headline)`
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
     font-size: ${(props) => props.theme.fonts.sizes.h4};
   }
+`
+
+const OrderTitleLocation = styled.span`
+  color: ${(props) =>
+    props.serviceType === 'PICKUP'
+      ? props.theme.links.primary.color
+      : 'inherit'};
 `
 
 const OrderButtons = styled.div`
@@ -162,9 +169,6 @@ const Order = ({ order, loading, error, isConfirmation }) => {
       : orderTypeName
   const hasDetails =
     eating_utensils || serving_utensils || person_count || tax_exempt_id
-  const orderTitle = revenue_center
-    ? `${orderTypeName} from ${revenue_center.name}`
-    : ''
 
   useEffect(() => {
     return () => dispatch(resetCustomerOrder())
@@ -189,7 +193,14 @@ const Order = ({ order, loading, error, isConfirmation }) => {
         <Preface size="small" color="tertiary">
           Order #{order_id}
         </Preface>
-        <OrderTitle as={isConfirmation ? 'h2' : 'h1'}>{orderTitle}</OrderTitle>
+        {revenue_center ? (
+          <OrderTitle as={isConfirmation ? 'h2' : 'h1'}>
+            {orderTypeName} from{' '}
+            <OrderTitleLocation serviceType={service_type}>
+              {revenue_center.name}
+            </OrderTitleLocation>
+          </OrderTitle>
+        ) : null}
         {!isMerch && auth && (
           <OrderButtons>
             {order.is_editable && (
@@ -222,7 +233,10 @@ const Order = ({ order, loading, error, isConfirmation }) => {
       />
       <OrderDetails>
         <OrderSection label="Location">
-          <OrderRevenueCenter revenueCenter={revenue_center} />
+          <OrderRevenueCenter
+            revenueCenter={revenue_center}
+            serviceType={service_type}
+          />
         </OrderSection>
         <OrderSection label="Requested Time">
           <OrderRequestedAt

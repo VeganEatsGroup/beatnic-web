@@ -11,6 +11,13 @@ import { openModal } from '../../../slices'
 import CheckoutSection from './CheckoutSection'
 import CheckoutSectionFootnote from './CheckoutSectionFootnote'
 import CheckoutSectionTitle from './CheckoutSectionTitle'
+import styled from '@emotion/styled'
+
+const CheckoutSectionTitleWrapper = styled.div`
+  & > div > p {
+    color: ${(props) => props.theme.links.primary.color};
+  }
+`
 
 const CheckoutPickup = () => {
   const navigate = useNavigate()
@@ -50,7 +57,9 @@ const CheckoutPickup = () => {
 
   return (
     <CheckoutSection title="Location & Time">
-      <CheckoutSectionTitle>{name}</CheckoutSectionTitle>
+      <CheckoutSectionTitleWrapper>
+        <CheckoutSectionTitle>{name}</CheckoutSectionTitle>
+      </CheckoutSectionTitleWrapper>
       <p>{address.street}</p>
       {/* <p>{addressLine2}</p> */}
       <p>

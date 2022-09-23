@@ -129,7 +129,7 @@ const CheckoutTip = () => {
               onClick={applyCustomTip}
               disabled={!customTip || customTipApplied}
               size="small"
-              color="secondary"
+              // color="secondary"
             >
               Apply
             </ButtonStyled>

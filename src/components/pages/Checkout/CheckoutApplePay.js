@@ -17,7 +17,7 @@ const ApplePayButton = styled('button')`
   display: inline-block;
   -webkit-appearance: -apple-pay-button;
   -apple-pay-button-type: plain;
-  -apple-pay-button-style: white;
+  -apple-pay-button-style: black;
   width: 100%;
   height: 5rem;
 `

@@ -56,7 +56,7 @@ const MenuHeaderName = styled.span`
   }
 
   span {
-    color: ${(props) => props.theme.buttons.colors.headerHover.color};
+    color: ${(props) => props.theme.buttons.colors.header.color};
     font-size: ${(props) => props.theme.fonts.sizes.xxBig};
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
       font-size: ${(props) => props.theme.fonts.sizes.big};
@@ -68,7 +68,7 @@ const MenuHeaderDropdown = styled.span`
   margin: -0.2rem 0 0 0.2rem;
   width: 2.4rem;
   height: 2.4rem;
-  color: ${(props) => props.theme.buttons.colors.headerHover.color};
+  color: ${(props) => props.theme.buttons.colors.header.color};
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     margin-top: 0.2rem;
   }

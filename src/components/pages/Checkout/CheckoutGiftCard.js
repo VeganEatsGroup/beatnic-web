@@ -88,7 +88,7 @@ const PaymentGiftCard = () => {
             onClick={applyCardNumber}
             disabled={disabled}
             size="small"
-            color="secondary"
+            // color="secondary"
           >
             {submitting ? 'Adding to Account...' : 'Add to Account'}
           </ButtonStyled>
