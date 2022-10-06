@@ -25,7 +25,8 @@ const MenuMobileMenuView = styled.div`
   transition: all 0.125s ease;
   visibility: ${(props) => (props.show ? 'visible' : 'hidden')};
   transform: translateY(${(props) => (props.show ? '0' : '-100%')});
-  background-color: ${(props) => props.theme.bgColors.primary};
+  background-color: ${(props) =>
+    props.theme.header[props.stuck ? 'stuck' : 'primary']};
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     top: ${(props) => props.theme.layout.navHeightMobile};
   }
@@ -71,6 +72,10 @@ const MenuMobileMenuRow = styled.div`
   }
 `
 
+const MenuMobileMenuRowTitle = styled(Preface)`
+  color: ${(props) => props.theme.buttons.colors.header.color};
+`
+
 const MenuMobileMenu = ({ order, showMenu, setShowMenu }) => {
   const { orderId, revenueCenter, serviceType, requestedAt } = order
   const autoSelect = useSelector(selectAutoSelect)
@@ -99,31 +104,41 @@ const MenuMobileMenu = ({ order, showMenu, setShowMenu }) => {
             <>
               {orderId && (
                 <MenuMobileMenuRow>
-                  <Preface size="xSmall">Editing Order #{orderId}</Preface>
+                  <MenuMobileMenuRowTitle size="xSmall">
+                    Editing Order #{orderId}
+                  </MenuMobileMenuRowTitle>
                   <CancelEdit />
                 </MenuMobileMenuRow>
               )}
               {revenueCenter && !autoSelect ? (
                 <MenuMobileMenuRow>
-                  <Preface size="xSmall">Location</Preface>
+                  <MenuMobileMenuRowTitle size="xSmall">
+                    Location
+                  </MenuMobileMenuRowTitle>
                   <RevenueCenter useButton={true} />
                 </MenuMobileMenuRow>
               ) : null}
               {serviceType && !isCartOwner ? (
                 <MenuMobileMenuRow>
-                  <Preface size="xSmall">Service Type</Preface>
+                  <MenuMobileMenuRowTitle size="xSmall">
+                    Service Type
+                  </MenuMobileMenuRowTitle>
                   <ServiceType useButton={true} />
                 </MenuMobileMenuRow>
               ) : null}
               {requestedAt && (
                 <MenuMobileMenuRow>
-                  <Preface size="xSmall">Requested Time</Preface>
+                  <MenuMobileMenuRowTitle size="xSmall">
+                    Requested Time
+                  </MenuMobileMenuRowTitle>
                   <RequestedAt useButton={true} />
                 </MenuMobileMenuRow>
               )}
               {hasGroupOrdering && (
                 <MenuMobileMenuRow>
-                  <Preface size="xSmall">Group Ordering</Preface>
+                  <MenuMobileMenuRowTitle size="xSmall">
+                    Group Ordering
+                  </MenuMobileMenuRowTitle>
                   <GroupOrder />
                 </MenuMobileMenuRow>
               )}
