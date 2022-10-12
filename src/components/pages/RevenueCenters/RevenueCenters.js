@@ -16,7 +16,7 @@ import {
   selectBrand,
   selectSettings,
   selectGeoLatLng,
-  selectHeaderHeight,
+  // selectHeaderHeight,
 } from '../../../slices'
 import {
   Content,
@@ -33,8 +33,8 @@ const RevenueCenters = () => {
   const dispatch = useDispatch()
   const [activeMarker, setActiveMarker] = useState(null)
   const { title: siteTitle } = useSelector(selectBrand)
-  const headerHeight = useSelector(selectHeaderHeight)
-  const offset = headerHeight + 20
+  // const headerHeight = useSelector(selectHeaderHeight)
+  // const offset = headerHeight + 20
   const { orderType, serviceType, address } = useSelector(selectOrder)
   const { googleMaps } = useSelector(selectSettings)
   const { apiKey, defaultCenter, zoom, styles, icons } = googleMaps
@@ -71,7 +71,7 @@ const RevenueCenters = () => {
         setCenter({ lat: address.lat, lng: address.lng })
         const element = document.getElementById(slug)
         if (element) {
-          const position = element.offsetTop + offset
+          const position = element.offsetTop
           scroll.scrollTo(position, {
             duration: 500,
             smooth: true,
@@ -86,7 +86,7 @@ const RevenueCenters = () => {
         setCenter(newCenter)
       }
     },
-    [address, defaultCenter, geoLatLng, offset]
+    [address, defaultCenter, geoLatLng]
   )
 
   return (

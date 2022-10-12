@@ -107,7 +107,6 @@ const getActiveElement = (elements, navOffset) => {
   return elements
     .filter((i) => i.getBoundingClientRect().top <= navOffset)
     .reduce((max, i) => {
-      // console.log(i, i.getBoundingClientRect().top)
       return max &&
         max.getBoundingClientRect().top > i.getBoundingClientRect().top
         ? max
