@@ -12,7 +12,7 @@ const MenuItemSelectedOptionView = styled.span`
   padding: 0.2rem 0.7rem;
   margin: 0 0.5rem 0 0;
   border-radius: 1rem;
-  background-color: ${(props) => props.theme.bgColors.tertiary};
+  background-color: ${(props) => props.theme.bgColors.alert};
 `
 
 const MenuItemSelectedOptionContainer = styled.span`
@@ -28,6 +28,7 @@ const MenuItemSelectedOptionName = styled(Body)`
 const MenuItemSelectedOptionRemove = styled.button`
   display: block;
   margin: 0 0 0 0.5rem;
+  color: ${(props) => props.theme.colors.error};
 `
 
 const MenuItemSelectedOption = ({ option, decrement }) => {
@@ -40,7 +41,7 @@ const MenuItemSelectedOption = ({ option, decrement }) => {
         <MenuItemSelectedOptionName>{option.name}</MenuItemSelectedOptionName>
         {decrement ? (
           <MenuItemSelectedOptionRemove onClick={() => decrement(option)}>
-            <X size={10} />
+            <X size={12} strokeWidth={2} />
           </MenuItemSelectedOptionRemove>
         ) : null}
       </MenuItemSelectedOptionContainer>
