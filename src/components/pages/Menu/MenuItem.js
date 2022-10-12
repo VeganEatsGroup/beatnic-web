@@ -177,7 +177,7 @@ const MenuItem = ({
         </MenuItemCount>
       )}
       <MenuItemButton
-        onClick={view}
+        onClick={!isIncomplete ? add : view}
         disabled={isSoldOut || displayOnly}
         showImage={showImage}
         imageUrl={imageUrl}

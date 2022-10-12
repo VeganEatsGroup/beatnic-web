@@ -169,13 +169,13 @@ const RevenueCenter = ({
   const hasBox = theme.cards.default.bgColor !== 'transparent'
   const { cartGuest } = useSelector(selectGroupOrder)
   const { storePhone = true } = useSelector(selectDisplaySettings)
-  const { address, images, hours, is_outpost, description } = revenueCenter
+  const { address, images, hours, is_outpost } = revenueCenter
   const smallImg = images.find((i) => i.type === 'SMALL_IMAGE')
   const largeImg = images.find((i) => i.type === 'SMALL_IMAGE')
   const bgImage = smallImg.url || largeImg.url
   const bgStyle = bgImage ? { backgroundImage: `url(${bgImage}` } : null
   const phoneUrl = address.phone ? `tel:${address.phone}` : null
-  const desc = description ? stripTags(description) : null
+  // const desc = description ? stripTags(description) : null
   const hoursDesc = hours.description ? stripTags(hours.description) : null
   const hoursDescIcon = is_outpost ? <AlertCircle /> : <Clock />
   const distance =
@@ -253,11 +253,11 @@ const RevenueCenter = ({
               </RevenueCenterImageMobile>
             )}
           </RevenueCenterFlex>
-          {desc && (
+          {/* {desc && (
             <RevenueCenterDesc>
               <p>{desc}</p>
             </RevenueCenterDesc>
-          )}
+          )} */}
           {!cartGuest && (
             <RevenueCenterOrder
               revenueCenter={revenueCenter}

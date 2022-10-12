@@ -6,7 +6,7 @@
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
     "@google-pay/button-react": "^3.0.0",
-    "@open-tender/components": "^5.0.6",
+    "@open-tender/components": "^5.0.7",
     "@open-tender/hooks": "^1.0.1",
     "@open-tender/js": "^2.2.4",
     "@open-tender/redux": "^3.0.14",
