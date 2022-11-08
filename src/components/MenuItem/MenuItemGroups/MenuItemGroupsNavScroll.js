@@ -65,7 +65,6 @@ const MenuItemGroupsNavScrollButton = ({ item, active, offset = 0 }) => {
   const isCompleted = min > 0 && quantity >= min
 
   const onClick = (evt) => {
-    console.log(item)
     evt.preventDefault()
     evt.target.blur()
     const element = document.getElementById(id)

@@ -214,14 +214,10 @@ const MenuItemHeader = ({
   const isIncomplete = totalPrice === 0 || quantity === '' || groupsBelowMin
   const requiresCustomization = isIncomplete && !missingSize
   const nonSizeGroups = groups.filter((i) => !i.isSize)
-  // const currentOptions = getItemOptions({ groups: nonSizeGroups })
-  // const hasSelections = currentOptions && currentOptions.length ? true : false
-  // const klass = isCustomize ? 'isCustomize' : ''
 
   useEffect(() => {
     const handleScroll = () => {
       if (headerRef.current && topOffset !== null) {
-        // console.log(headerRef.current.getBoundingClientRect().top)
         setStuck(headerRef.current.getBoundingClientRect().top <= topOffset - 1)
       }
     }

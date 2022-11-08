@@ -103,7 +103,10 @@ const MenuItem = ({
   } = useBuilder(item || {})
   const { builderImages, hasCustomize } = displaySettings
   const displayImage = showImage && !isCustomize && builderImages ? true : false
-  const hasGroups = builtItem.groups.filter((g) => !g.isSize).length > 0
+  const hasGroups =
+    builtItem && builtItem.groups
+      ? builtItem.groups.filter((g) => !g.isSize).length > 0
+      : false
   const showGroups = hasGroups && (!hasCustomize || isCustomize)
 
   const addItem = (builtItem) => {
