@@ -11,18 +11,16 @@ const MenuItemImageView = styled.div`
   height: ${(props) => props.theme.item.desktop.imageHeight};
   min-height: ${(props) => props.theme.item.desktop.imageMinHeight};
   max-height: ${(props) => props.theme.item.desktop.imageMaxHeight};
-  padding: ${(props) => props.theme.item.desktop.imagePadding};
-  padding-top: ${(props) =>
-    props.hasBack ? '0' : props.theme.item.desktop.imagePadding};
-  padding-bottom: 0;
+  padding: 0 ${(props) => props.theme.item.desktop.imagePadding};
+  margin-top: ${(props) =>
+    props.hidePadding ? '0' : props.theme.item.desktop.imagePadding};
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     height: ${(props) => props.theme.item.mobile.imageHeight};
     min-height: ${(props) => props.theme.item.mobile.imageMinHeight};
     max-height: ${(props) => props.theme.item.mobile.imageMaxHeight};
-    padding: ${(props) => props.theme.item.mobile.imagePadding};
-    padding-top: ${(props) =>
-      props.hasBack ? '0' : props.theme.item.mobile.imagePadding};
-    padding-bottom: 0;
+    padding: 0 ${(props) => props.theme.item.mobile.imagePadding};
+    margin-top: ${(props) =>
+      props.hidePadding ? '0' : props.theme.item.mobile.imagePadding};
   }
 `
 
@@ -57,13 +55,15 @@ const MenuItemBackgroundImage = styled(BgImage)`
 `
 
 const MenuItemImage = ({ imageUrl, hasBack }) => {
-  const { bgColors } = useTheme()
+  const { bgColors, header } = useTheme()
   const { hasLoaded, hasError } = useImage(imageUrl)
   const isLoading = !hasLoaded && !hasError
   const bgStyle = imageUrl ? { backgroundImage: `url(${imageUrl}` } : null
+  const hidePadding =
+    bgColors.primary === header.primary && hasBack ? true : false
 
   return (
-    <MenuItemImageView hasBack={hasBack}>
+    <MenuItemImageView hidePadding={hidePadding}>
       {isLoading && (
         <MenuItemBackgroundImageContainer>
           <MenuItemImageLoading>

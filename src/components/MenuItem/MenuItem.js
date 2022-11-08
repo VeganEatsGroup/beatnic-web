@@ -53,6 +53,7 @@ const MenuItemBack = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 ${(props) => props.theme.item.desktop.padding};
+  background-color: ${(props) => props.theme.header.primary};
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     padding: 0 ${(props) => props.theme.item.mobile.padding};
   }
