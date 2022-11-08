@@ -1597,10 +1597,10 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@open-tender/components@^5.0.7":
-  version "5.0.7"
-  resolved "https://registry.yarnpkg.com/@open-tender/components/-/components-5.0.7.tgz#908de14574ce2d35faabadf2fd01ac2f6eb7952c"
-  integrity sha512-uXaKMo+z9YTAkQXrjGGwxd+6dtUWWUgaMR/6Fuc9R8znVp9g0B+cq3RauYcm/2aeoMcPDSiyZksXtRvzp0Y/PQ==
+"@open-tender/components@^5.1.2":
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/@open-tender/components/-/components-5.1.2.tgz#aface912b18247246252dbdba143e1e88b79b9bc"
+  integrity sha512-5t1o0Tu4OlvjrGOL8jJLfgZG/fs7l6d8x/E2M8KoEVxqELhGgegTgx7BXL5w5PHsEh1nXdmm4kKZrDiz0qxHGg==
   dependencies:
     "@google-pay/button-react" "^3.0.0"
     "@googlemaps/js-api-loader" "^1.14.3"

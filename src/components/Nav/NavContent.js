@@ -158,7 +158,7 @@ const NavItem = styled.button`
   align-items: center;
   text-align: left;
   line-height: 0;
-  padding: 1.25rem 1rem 1.25rem 3rem;
+  padding: 1rem 1rem 1rem 3rem;
   color: ${(props) => props.theme.links.dark.color};
 
   &:hover {
@@ -183,6 +183,7 @@ const NavTitle = styled.span`
   display: block;
   flex-grow: 1;
   font-size: ${(props) => props.theme.fonts.sizes.small};
+  line-height: ${(props) => props.theme.fonts.body.lineHeight};
 `
 
 const NavFooter = styled.div`

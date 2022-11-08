@@ -56,36 +56,30 @@ const MenuItemButtonsWarning = styled(Body)`
   display: block;
   width: 100%;
   margin: 0 0 1rem;
-  // text-align: center;
   font-size: ${(props) => props.theme.fonts.sizes.xSmall};
   color: ${(props) => props.theme.colors.error};
 `
 
-const MenuItemButtonsAdd = styled.div`
-  ${(props) =>
-    props.disabled
-      ? `
-    button, button:active, button:hover, button:disabled {
-    opacity: 1;
-    color: ${props.theme.colors.primary};
-    background-color: ${props.theme.bgColors.tertiary};
-    border-color: ${props.theme.bgColors.tertiary};
-    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.05);
-  }`
-      : ''}
-`
+const MenuItemButtonsAdd = styled.div``
 
 const MenuItemButtonsCustomize = styled.div`
-  ${(props) =>
-    !props.customizeIsPrimary
-      ? `
-  button, button:active, button:hover, button:disabled {
+  button,
+  button:active,
+  button:hover,
+  button:disabled {
     border: 0;
     padding-left: 0;
     padding-right: 0;
     background-color: transparent;
-  }`
-      : ''}
+    color: ${(props) =>
+      props.theme.cards.menuItem.overrideFontColors
+        ? props.theme.cards.menuItem.titleColor
+        : props.theme.fonts.headings.color};
+  }
+
+  button:hover {
+    color: ${(props) => props.theme.links.primary.color};
+  }
 `
 
 const MenuItem = ({
@@ -135,12 +129,12 @@ const MenuItem = ({
     cartCounts,
     isMobile
   )
-  const builderType = 'PAGE'
+  // const builderType = 'PAGE'
+  const { builderType } = displaySettings
   const isBig = !isSimple && !isCentered ? true : false
   const showButtons = !displayOnly && isBig && showQuickAdd ? true : false
   const addDisabled = isIncomplete || isSoldOut
   const customizeIsPrimary = addDisabled && !isSoldOut
-
   const view = () => {
     if (!isSoldOut) {
       dispatch(setMenuPath(pathname || menuSlug))
@@ -204,7 +198,7 @@ const MenuItem = ({
               <ButtonStyled
                 onClick={isIncomplete ? () => setClicked(true) : add}
                 size="small"
-                disabled={isSoldOut}
+                disabled={isSoldOut || isIncomplete}
               >
                 Add To Order
               </ButtonStyled>
@@ -214,7 +208,8 @@ const MenuItem = ({
                 onClick={view}
                 disabled={isSoldOut}
                 size="small"
-                color={customizeIsPrimary ? 'primary' : 'secondary'}
+                color="secondary"
+                // color={customizeIsPrimary ? 'primary' : 'secondary'}
               >
                 {sizeOnly ? 'Choose Size' : 'Customize'}
               </ButtonStyled>
