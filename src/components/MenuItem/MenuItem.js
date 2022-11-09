@@ -145,18 +145,20 @@ const MenuItem = ({
           {displayImage && (
             <MenuItemImage imageUrl={builtItem.imageUrl} hasBack={showBack} />
           )}
-          <MenuItemHeader
-            cancel={cancel}
-            builtItem={builtItem}
-            decrementOption={decrementOption}
-            displaySettings={displaySettings}
-            pointsIcon={pointsIcon}
-            hasCustomize={hasCustomize}
-            isCustomize={isCustomize}
-            setIsCustomize={setIsCustomize}
-            topOffset={topOffset}
-            scrollContainer={scrollContainer}
-          />
+          {builtItem && (
+            <MenuItemHeader
+              cancel={cancel}
+              builtItem={builtItem}
+              decrementOption={decrementOption}
+              displaySettings={displaySettings}
+              pointsIcon={pointsIcon}
+              hasCustomize={hasCustomize}
+              isCustomize={isCustomize}
+              setIsCustomize={setIsCustomize}
+              topOffset={topOffset}
+              scrollContainer={scrollContainer}
+            />
+          )}
           {!hasCustomize || !isCustomize ? (
             <MenuItemAccordion
               hasCustomize={hasCustomize}
