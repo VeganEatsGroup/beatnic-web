@@ -195,7 +195,7 @@ const MenuItemHeader = ({
   const hasTags = showTags && tags.length ? true : false
   const hasAllergens = showAllergens && allergens.length ? true : false
   const hasTagsAllergens = hasTags || hasAllergens ? true : false
-  const sizeGroup = groups.find((i) => i.isSize)
+  const sizeGroup = groups ? groups.find((i) => i.isSize) : null
   const defaultOption = !sizeGroup
     ? null
     : sizeGroup.options.find((i) => i.isDefault) || sizeGroup.options[0]
@@ -209,11 +209,13 @@ const MenuItemHeader = ({
   const missingSize = sizeGroup
     ? !sizeGroup.options.find((i) => i.quantity >= 1)
     : false
-  const hasGroups = groups.filter((g) => !g.isSize).length > 0
-  const groupsBelowMin = groups.filter((g) => g.quantity < g.min).length > 0
+  const hasGroups = groups ? groups.filter((g) => !g.isSize).length > 0 : false
+  const groupsBelowMin = groups
+    ? groups.filter((g) => g.quantity < g.min).length > 0
+    : false
   const isIncomplete = totalPrice === 0 || quantity === '' || groupsBelowMin
   const requiresCustomization = isIncomplete && !missingSize
-  const nonSizeGroups = groups.filter((i) => !i.isSize)
+  const nonSizeGroups = groups ? groups.filter((i) => !i.isSize) : null
 
   useEffect(() => {
     const handleScroll = () => {

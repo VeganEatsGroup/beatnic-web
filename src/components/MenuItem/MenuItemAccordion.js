@@ -313,7 +313,7 @@ const MenuItemAccordion = ({
       : hasNotes
       ? 'Special Instructions'
       : ''
-  const sizeGroup = groups.find((i) => i.isSize)
+  const sizeGroup = groups ? groups.find((i) => i.isSize) : null
   const selectedSize = sizeGroup
     ? sizeGroup.options.find((i) => i.quantity >= 1)
     : null
