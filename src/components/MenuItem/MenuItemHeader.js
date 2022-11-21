@@ -192,8 +192,9 @@ const MenuItemHeader = ({
     allergens,
     groups,
   } = builtItem
-  const hasTags = showTags && tags.length ? true : false
-  const hasAllergens = showAllergens && allergens.length ? true : false
+  const hasTags = showTags && Array.isArray(tags) && tags.length ? true : false
+  const hasAllergens =
+    showAllergens && Array.isArray(allergens) && allergens.length ? true : false
   const hasTagsAllergens = hasTags || hasAllergens ? true : false
   const sizeGroup = groups ? groups.find((i) => i.isSize) : null
   const defaultOption = !sizeGroup

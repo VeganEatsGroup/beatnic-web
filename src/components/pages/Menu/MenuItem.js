@@ -129,12 +129,12 @@ const MenuItem = ({
     cartCounts,
     isMobile
   )
-  // const builderType = 'PAGE'
   const { builderType } = displaySettings
   const isBig = !isSimple && !isCentered ? true : false
   const showButtons = !displayOnly && isBig && showQuickAdd ? true : false
   const addDisabled = isIncomplete || isSoldOut
   const customizeIsPrimary = addDisabled && !isSoldOut
+
   const view = () => {
     if (!isSoldOut) {
       dispatch(setMenuPath(pathname || menuSlug))

@@ -149,12 +149,14 @@ const MenuItemFooter = ({
   )
   const skip = isMobile ? skipToCustomizeMobile : skipToCustomize
   const { groups, quantity, totalPrice } = builtItem
-  const sizeGroup = groups.find((g) => g.isSize)
+  const sizeGroup = groups ? groups.find((g) => g.isSize) : null
   const missingSize = sizeGroup
     ? !sizeGroup.options.find((i) => i.quantity >= 1)
     : false
-  const hasGroups = groups.filter((g) => !g.isSize).length > 0
-  const groupsBelowMin = groups.filter((g) => g.quantity < g.min).length > 0
+  const hasGroups = groups ? groups.filter((g) => !g.isSize).length > 0 : false
+  const groupsBelowMin = groups
+    ? groups.filter((g) => g.quantity < g.min).length > 0
+    : false
   const isIncomplete = totalPrice === 0 || quantity === '' || groupsBelowMin
   const requiresCustomization = isIncomplete && !missingSize
   const shouldSkip = hasCustomize ? hasGroups && skip : false

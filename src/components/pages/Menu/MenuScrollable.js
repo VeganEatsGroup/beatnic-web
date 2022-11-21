@@ -20,7 +20,9 @@ const MenuScrollable = ({ displayedSections }) => {
   const { categories } = useContext(MenuContext)
   const sections = makeMenuSections(displayedSections)
   // const deals = sections.find((i) => i.name === 'Deals')
-  const other = sections.filter((i) => i.name !== 'Deals')
+  const other = sections
+    .filter((i) => i.name !== 'Deals')
+    .map((i) => ({ ...i, items: i.items.slice(0, 8) }))
   const navItems = [
     ...other.map((i) => i.name),
     ...categories.map((i) => i.name),
