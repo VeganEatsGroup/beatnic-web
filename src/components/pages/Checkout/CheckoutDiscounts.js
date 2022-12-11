@@ -7,8 +7,9 @@ import {
   updateForm,
   validateOrder,
 } from '@open-tender/redux'
-import { selectContent } from '../../../slices'
+import { handleCheckoutErrors, isEmpty } from '@open-tender/js'
 import { ButtonLink, FormError, Text } from '@open-tender/components'
+import { selectContent } from '../../../slices'
 
 import CheckoutSection from './CheckoutSection'
 import CheckoutButton from './CheckoutButton'
@@ -17,19 +18,20 @@ const CheckoutDiscountsView = styled.div`
   margin: 2rem 0 0;
 `
 
-// const usePrevious = (value) => {
-//   const ref = useRef(null)
-//   useEffect(() => {
-//     ref.current = value
-//   })
-//   return ref.current
-// }
-
 const calcTotal = (totals) => {
   if (!totals) return 0.0
   const { subtotal, surcharge, discount } = totals
   if (!subtotal) return 0.0
   return parseFloat(subtotal) + parseFloat(surcharge) + parseFloat(discount)
+}
+
+const makeErrorMsg = (errors, check) => {
+  if (errors && !isEmpty(errors)) {
+    return errors?.customer?.account
+  }
+  if (!check || !check.errors) return null
+  const checkErrors = handleCheckoutErrors({ params: check.errors })
+  return checkErrors ? checkErrors?.customer?.account : null
 }
 
 const CheckoutDiscounts = () => {
@@ -39,8 +41,8 @@ const CheckoutDiscounts = () => {
   const { customer_id, is_verified } = check.customer || {}
   const total = calcTotal(check.totals)
   const [pendingDiscount, setPendingDiscount] = useState(null)
-  const discountIds = form.discounts.map((i) => i.id)
-  const errMsg = errors ? errors?.customer?.account : null
+  const discountIds = form.discounts.map((i) => i.id).filter((i) => i !== 0)
+  const errMsg = makeErrorMsg(errors, check)
 
   // add initial auto applied discounts
   useEffect(() => {
@@ -60,6 +62,12 @@ const CheckoutDiscounts = () => {
     if (loading !== 'pending') setPendingDiscount(null)
   }, [loading])
 
+  useEffect(() => {
+    if (errMsg) {
+      dispatch(updateForm({ discounts: [] }))
+    }
+  }, [errMsg, dispatch])
+
   const discountsOptional = check.config.discounts.length
     ? check.config.discounts
     : null
@@ -68,7 +76,11 @@ const CheckoutDiscounts = () => {
   const applyDiscount = (discountId, extId) => {
     setPendingDiscount(discountId)
     const newDiscount = { id: discountId, ext_id: extId || '' }
-    dispatch(updateForm({ discounts: [...form.discounts, newDiscount] }))
+    if (extId) {
+      dispatch(updateForm({ discounts: [newDiscount] }))
+    } else {
+      dispatch(updateForm({ discounts: [...form.discounts, newDiscount] }))
+    }
     dispatch(validateOrder())
   }
 
@@ -99,7 +111,7 @@ const CheckoutDiscounts = () => {
 
     return (
       <CheckoutButton
-        key={i.id}
+        key={`${i.id}-${i.ext_id}`}
         title={title}
         onPress={isPending ? null : onPress}
         isApplied={isApplied}
