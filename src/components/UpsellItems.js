@@ -84,7 +84,6 @@ const UpsellItems = () => {
   const itemIds = uniqueIds.filter(
     (id) => !cartIds.includes(id) && !soldOut.includes(id)
   )
-  console.log(itemIds, itemLookup)
   if (!itemIds.length) return null
   const upsellItems = makeUpsellItems(itemIds, itemLookup)
   if (!upsellItems.length) return null

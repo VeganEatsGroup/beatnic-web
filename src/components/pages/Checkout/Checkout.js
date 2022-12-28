@@ -11,8 +11,10 @@ import {
   selectOrder,
   selectCheckout,
   resetCheck,
+  resetConfirmation,
   resetErrors,
   resetTip,
+  selectConfirmationOrder,
   setConfirmationOrder,
   setSubmitting,
   setDeviceType,
@@ -210,6 +212,8 @@ const Checkout = () => {
   const hasCustomer = auth ? true : false
   const { check, form, errors, submitting, completedOrder } =
     useSelector(selectCheckout)
+  const confirmedOrder = useSelector(selectConfirmationOrder)
+  const hasConfirmationOrder = confirmedOrder ? true : false
   const hasCheck = check ? true : false
   const hasFormCustomer = !isEmpty(form.customer) ? true : false
   const formError = errors ? errors.form || null : null
@@ -223,6 +227,7 @@ const Checkout = () => {
 
   useEffect(() => {
     dispatch(setSubmitting(false))
+    dispatch(resetConfirmation())
     dispatch(setDeviceType(deviceTypeName))
     return () => {
       dispatch(resetErrors())
@@ -239,8 +244,10 @@ const Checkout = () => {
 
   useEffect(() => {
     if (completedOrder) {
-      dispatch(setConfirmationOrder(completedOrder))
-      navigate('/confirmation')
+      if (!hasConfirmationOrder) {
+        dispatch(setConfirmationOrder(completedOrder))
+        navigate('/confirmation')
+      }
     } else if (cartTotal === 0) {
       navigate(menuSlug)
     } else if (!revenueCenterId || !serviceType) {
@@ -258,6 +265,7 @@ const Checkout = () => {
     completedOrder,
     hasCustomer,
     hasFormCustomer,
+    hasConfirmationOrder,
   ])
 
   return (
