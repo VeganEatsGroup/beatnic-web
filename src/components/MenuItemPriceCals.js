@@ -1,6 +1,6 @@
 import propTypes from 'prop-types'
 import styled from '@emotion/styled'
-import { Body, Heading } from '@open-tender/components'
+import { Heading } from '@open-tender/components'
 
 const MenuItemPriceCalsView = styled.span`
   display: flex;
@@ -9,17 +9,31 @@ const MenuItemPriceCalsView = styled.span`
 `
 
 const MenuItemPrice = styled(Heading)`
-  // line-height: 1;
   font-size: ${(props) => props.theme.fonts.sizes[props.size]};
+  ${(props) =>
+    props.theme.cards.menuItem.overrideFontColors
+      ? `color: ${props.theme.cards.menuItem.priceColor};`
+      : ''};
 `
 
-const MenuItemCals = styled(Body)`
-  // line-height: 1;
+const MenuItemCals = styled(Heading)`
   font-size: ${(props) => props.theme.fonts.sizes[props.size]};
+  ${(props) =>
+    props.theme.cards.menuItem.overrideFontColors
+      ? `color: ${props.theme.cards.menuItem.caloriesColor};`
+      : ''};
+`
 
-  span {
-    padding: 0 0.4rem;
-  }
+const MenuItemPriceSep = styled.span`
+  display: block;
+  width: 8px;
+  height: 1px;
+  margin: 0 3px;
+  background-color: ${(props) => props.theme.fonts.body.color};
+  ${(props) =>
+    props.theme.cards.menuItem.overrideFontColors
+      ? `background-color: ${props.theme.cards.menuItem.textColor};`
+      : ''};
 `
 
 const MenuItemPriceCals = ({
@@ -32,12 +46,8 @@ const MenuItemPriceCals = ({
   return (
     <MenuItemPriceCalsView style={style}>
       {price ? <MenuItemPrice size={size}>{price}</MenuItemPrice> : null}
-      {cals ? (
-        <MenuItemCals size={size}>
-          {price ? <span>&mdash;</span> : null}
-          {cals} Cal
-        </MenuItemCals>
-      ) : null}
+      {price && cals ? <MenuItemPriceSep /> : null}
+      {cals ? <MenuItemCals size={size}>{cals} Cal</MenuItemCals> : null}
       {children}
     </MenuItemPriceCalsView>
   )

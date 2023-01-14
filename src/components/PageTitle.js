@@ -17,7 +17,7 @@ const PageTitleView = styled.div`
 const PageTitleTitle = styled(Headline)`
   margin: 0 0 0 -0.2rem;
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    font-size: ${(props) => props.theme.fonts.sizes.xBig};
+    font-size: ${(props) => props.theme.fonts.sizesMobile.h1};
   }
 `
 
@@ -25,7 +25,7 @@ const PageTitleSubtitle = styled(Body)`
   margin: 1rem 0 0;
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     margin: 0.5rem 0 0;
-    font-size: ${(props) => props.theme.fonts.sizes.small};
+    font-size: ${(props) => props.theme.fonts.sizesMobile.small};
   }
 `
 

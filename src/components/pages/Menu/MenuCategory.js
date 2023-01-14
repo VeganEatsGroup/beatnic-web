@@ -1,8 +1,7 @@
 import propTypes from 'prop-types'
 import styled from '@emotion/styled'
+import { useTheme } from '@emotion/react'
 import { isMobile } from 'react-device-detect'
-import { useSelector } from 'react-redux'
-import { selectDisplaySettings } from '../../../slices'
 import { Container } from '../..'
 import MenuCategoryHeader from './MenuCategoryHeader'
 import MenuItems from './MenuItems'
@@ -10,14 +9,14 @@ import MenuItem from './MenuItem'
 
 export const MenuCategoryView = styled.div`
   margin: ${(props) => props.theme.layout.margin} 0;
-  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     margin: ${(props) => props.theme.layout.marginMobile} 0;
   }
 `
 
 const MenuCategory = ({ category, isChild }) => {
-  const { itemsTwoPerRowMobile: showTwo } = useSelector(selectDisplaySettings)
-  const isSimple = isMobile && showTwo ? true : false
+  const { items } = useTheme()
+  const isSimple = isMobile && items.mobile.perRow > 1 ? true : false
   const { name, description } = category
   return (
     <MenuCategoryView isChild={isChild}>
@@ -28,7 +27,7 @@ const MenuCategory = ({ category, isChild }) => {
           isChild={isChild}
         />
         {category.items.length > 0 && (
-          <MenuItems perRow={showTwo ? 2 : 1}>
+          <MenuItems>
             {category.items.map((item, index) => (
               <MenuItem
                 key={`${item.id}-${index}`}

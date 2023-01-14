@@ -102,6 +102,13 @@ export const selectApi = (state) => state.config.api
 export const selectContentSection = (page) => (state) =>
   state.config.content[page]
 
+export const selectCategoryType = (isMobile) => (state) => {
+  const { categories } = state.config.theme
+  if (!categories) return 'LIST'
+  const { desktop, mobile } = categories
+  return isMobile ? mobile.displayType : desktop.displayType
+}
+
 export const selectHasCatering = (state) => {
   const { orderTypes } = state.config.settings
   return orderTypes.includes('CATERING')

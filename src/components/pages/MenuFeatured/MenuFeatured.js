@@ -1,5 +1,6 @@
 import { useContext, useEffect } from 'react'
 import styled from '@emotion/styled'
+import { useTheme } from '@emotion/react'
 import { isMobile } from 'react-device-detect'
 import { useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
@@ -19,10 +20,9 @@ const MenuFeaturedView = styled.div`
 
 const MenuFeatured = () => {
   const navigate = useNavigate()
-  const { categories, isLoading, siteTitle, displaySettings } =
-    useContext(MenuContext)
-  const { itemsTwoPerRowMobile: showTwo } = displaySettings
-  const isSimple = isMobile && showTwo ? true : false
+  const { categories, isLoading, siteTitle } = useContext(MenuContext)
+  const { items } = useTheme()
+  const isSimple = isMobile && items.mobile.perRow > 1 ? true : false
   const menuSlug = useSelector(selectMenuSlug)
   const featured = makeFeatured(categories)
   const shouldRedirect = !isLoading && featured.length === 0
@@ -47,7 +47,7 @@ const MenuFeatured = () => {
               {isLoading ? (
                 <Loading />
               ) : (
-                <MenuItems perRow={showTwo ? 2 : 1}>
+                <MenuItems>
                   {featured.map((item, index) => (
                     <MenuItem
                       key={`${item.id}-${index}`}

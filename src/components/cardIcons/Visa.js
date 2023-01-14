@@ -4,8 +4,8 @@ const Visa = ({ size }) => {
   return (
     <svg
       width={size}
-      enableBackground="new 0 0 780 500"
       version="1.1"
+      // enableBackground="new 0 0 780 500"
       viewBox="0 0 780 500"
     >
       <path

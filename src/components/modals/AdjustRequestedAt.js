@@ -4,8 +4,9 @@ import { useDispatch } from 'react-redux'
 import {
   setServiceType,
   setRequestedAt,
-  resetRevenueCenter,
+  resetCart,
   resetMenuVars,
+  resetRevenueCenter,
   fetchMenu,
 } from '@open-tender/redux'
 import {
@@ -26,6 +27,7 @@ const AdjustRequestedAt = ({ firstTimes, revenueCenter }) => {
   const handleUpdate = ({ serviceType, requestedAt }) => {
     dispatch(setServiceType(serviceType))
     dispatch(setRequestedAt(requestedAt))
+    dispatch(resetCart())
     dispatch(resetMenuVars())
     dispatch(fetchMenu({ revenueCenterId, serviceType, requestedAt }))
     dispatch(closeModal())

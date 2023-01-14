@@ -23,6 +23,7 @@ import {
   HeaderDefault,
   PageContainer,
 } from '../..'
+import { cardIconsMap } from '../../cardIcons'
 
 const giftCardIconMap = {
   plus: <Plus strokeWidth={2} />,
@@ -83,6 +84,7 @@ const GiftCards = () => {
                 loading={loading}
                 error={error}
                 iconMap={giftCardIconMap}
+                cardIconMap={cardIconsMap}
                 recaptchaKey={includeRecaptcha ? recaptchaKey : null}
               />
             </FormWrapper>

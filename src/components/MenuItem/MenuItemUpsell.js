@@ -18,19 +18,19 @@ const MenuItemUpsellView = styled.div`
   left: 0;
   right: 0;
   background-color: ${(props) => props.theme.bgColors.primary};
-  padding: ${(props) => props.theme.layout.padding} 0;
+  padding: ${(props) => props.theme.layout.padding} 0 0;
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
-    padding: ${(props) => props.theme.layout.paddingMobile} 0;
+    padding: ${(props) => props.theme.layout.paddingMobile} 0 0;
   }
 `
 
 const MenuItemUpsellHeader = styled.div`
   text-align: center;
   padding: 0 ${(props) => props.theme.layout.padding};
-  margin: 0 0 ${(props) => props.theme.layout.padding};
+  // margin: 0 0 ${(props) => props.theme.layout.padding};
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
     padding: 0 ${(props) => props.theme.layout.paddingMobile};
-    margin: 0 0 ${(props) => props.theme.layout.paddingMobile};
+    // margin: 0 0 ${(props) => props.theme.layout.paddingMobile};
   }
 `
 
@@ -71,6 +71,10 @@ const MenuItemUpsellItems = styled.div`
   justify-content: flex-start;
   align-items: stretch;
   overflow-x: auto;
+  padding: ${(props) => props.theme.layout.padding} 0;
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    padding: ${(props) => props.theme.layout.paddingMobile} 0;
+  }
 
   &::-webkit-scrollbar {
     display: none;

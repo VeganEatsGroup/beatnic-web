@@ -5,7 +5,7 @@ import { selectCheckout, selectCustomer, updateForm } from '@open-tender/redux'
 import { formatDollars, checkAmountRemaining } from '@open-tender/js'
 
 import { selectContent } from '../../../slices'
-import { cardIconMap } from '../../../assets/cardIcons'
+import { cardIconsMap } from '../../cardIcons'
 import CheckoutSection from './CheckoutSection'
 import CheckoutButton from './CheckoutButton'
 import CheckoutGiftCard from './CheckoutGiftCard'
@@ -93,7 +93,7 @@ const CheckoutGiftCards = () => {
               return (
                 <CheckoutButton
                   key={i.card_number}
-                  icon={<img src={cardIconMap['OTHER']} alt={title} />}
+                  icon={cardIconsMap['OTHER']}
                   title={title}
                   subtitle={subtitle}
                   onPress={onPress}

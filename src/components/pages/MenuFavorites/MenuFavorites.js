@@ -16,6 +16,7 @@ import { selectContentSection } from '../../../slices'
 import { Container, Content, Loading, Main } from '../..'
 import { MenuCategoryHeader, MenuHeader, MenuItems, MenuItem } from '../Menu'
 import { MenuContext } from '../Menu/Menu'
+import { useTheme } from '@emotion/react'
 
 const MenuFavoritesView = styled.div`
   margin: ${(props) => props.theme.layout.margin} 0;
@@ -28,10 +29,9 @@ const MenuFavorites = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [count, setCount] = useState(0)
-  const { categories, soldOut, siteTitle, displaySettings } =
-    useContext(MenuContext)
-  const { itemsTwoPerRowMobile: showTwo } = displaySettings
-  const isSimple = isMobile && showTwo ? true : false
+  const { categories, soldOut, siteTitle } = useContext(MenuContext)
+  const { items } = useTheme()
+  const isSimple = isMobile && items.mobile.perRow > 1 ? true : false
   const { title, subtitle } = useSelector(selectContentSection('favorites'))
   const menuSlug = useSelector(selectMenuSlug)
   const { auth } = useSelector(selectCustomer)
@@ -80,7 +80,7 @@ const MenuFavorites = () => {
               {showLoading || updating ? (
                 <Loading />
               ) : (
-                <MenuItems perRow={showTwo ? 2 : 1}>
+                <MenuItems>
                   {favorites.map((item, index) => (
                     <MenuItem
                       key={`${item.id}-${index}`}

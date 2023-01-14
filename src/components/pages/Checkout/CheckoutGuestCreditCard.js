@@ -9,7 +9,7 @@ import {
   validateCreditCard,
 } from '@open-tender/js'
 import { CreditCard, useCreditCard } from '@open-tender/components'
-import { cardIconMap } from '../../../assets/cardIcons'
+import { cardIconsMap } from '../../cardIcons'
 
 const CheckoutGuestCreditCardView = styled('div')`
   margin: 1.5rem 0 0;
@@ -80,7 +80,7 @@ const CheckoutGuestCreditCard = () => {
         handleChange={handleChange}
         handleBlur={handleBlur}
         disabled={disabled}
-        cardIconMap={cardIconMap}
+        cardIconMap={cardIconsMap}
       />
     </CheckoutGuestCreditCardView>
   )

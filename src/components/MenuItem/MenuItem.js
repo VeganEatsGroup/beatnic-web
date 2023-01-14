@@ -12,6 +12,7 @@ import {
   selectSoldOut,
   showNotification,
 } from '@open-tender/redux'
+// import { makeSimpleCart } from '@open-tender/js'
 import { useBuilder } from '@open-tender/hooks'
 import { selectContentSection, selectDisplaySettings } from '../../slices'
 import { Star } from '../icons'
@@ -74,6 +75,7 @@ const MenuItem = ({
   const allergenAlerts = useSelector(selectSelectedAllergenNames)
   const displaySettings = useSelector(selectDisplaySettings)
   const item = useSelector(selectCurrentItem)
+  // console.log('item', item)
   const upsells = useSelector(selectContentSection('upsells')) || {}
   const cartIds = useSelector(selectCartIds)
   const upsellItems = item ? item.upsell_items || item.upsellItems : null
@@ -88,7 +90,7 @@ const MenuItem = ({
   const { orderType } = useSelector(selectOrder)
   const pointsProgram = useSelector(selectCustomerPointsProgram(orderType))
   const hasPoints = !!pointsProgram
-  const pointsIcon = hasPoints ? <Star /> : null
+  const pointsIcon = hasPoints ? <Star strokeWidth={2} /> : null
   const {
     item: builtItem,
     increment,
@@ -111,6 +113,8 @@ const MenuItem = ({
 
   const addItem = (builtItem) => {
     const cartItem = { ...builtItem }
+    // const simpleItem = makeSimpleCart([cartItem])
+    // console.log(JSON.stringify(simpleItem[0], null, 2))
     if (cartItem.index === -1) delete cartItem.index
     dispatch(addItemToCart(cartItem))
     dispatch(showNotification(`${cartItem.name} added to cart`))

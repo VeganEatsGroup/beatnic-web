@@ -231,14 +231,14 @@ const MenuItemHeader = ({
     }
   }, [topOffset, scrollContainer, isCustomize])
 
-  const priceCals = (style = {}) => (
+  const priceCals = (style = {}, size = 'main', showPoints = true) => (
     <MenuItemPriceCals
       price={displayPrice}
       cals={displayCals}
-      size="main"
+      size={size}
       style={style}
     >
-      {totalPoints && (
+      {showPoints && totalPoints ? (
         <MenuItemPoints>
           <Points
             points={totalPoints}
@@ -246,7 +246,7 @@ const MenuItemHeader = ({
             title="Points can be applied at checkout"
           />
         </MenuItemPoints>
-      )}
+      ) : null}
     </MenuItemPriceCals>
   )
 
@@ -254,10 +254,12 @@ const MenuItemHeader = ({
     <MenuItemHeaderView ref={headerRef}>
       <MenuItemScroll stuck={hasCustomize ? isCustomize : stuck}>
         <MenuItemScrollInfo>
-          <MenuItemScrollName size="big">{name}</MenuItemScrollName>
+          <MenuItemScrollName size={isMobile ? 'main' : 'big'}>
+            {name}
+          </MenuItemScrollName>
         </MenuItemScrollInfo>
         <MenuItemScrollPrice>
-          {priceCals()}
+          {priceCals({}, isMobile ? 'small' : 'main', isMobile ? false : true)}
           <MenuItemScrollClose onClick={cancel}>
             <XCircle size={24} />
           </MenuItemScrollClose>
@@ -267,19 +269,19 @@ const MenuItemHeader = ({
         <MenuItemHeaderContainer>
           <MenuItemInfo>
             <MenuItemNameContainer>
-              <MenuItemName size="xBig" as="p">
+              <MenuItemName size={isMobile ? 'big' : 'xBig'} as="p">
                 {name}
               </MenuItemName>
               {auth && (
                 <MenuItemFavorite
-                  size={isMobile ? 16 : 24}
+                  size={isMobile ? 18 : 24}
                   favoriteId={favoriteId}
                   builtItem={builtItem}
                   disabled={isIncomplete}
                 />
               )}
             </MenuItemNameContainer>
-            {priceCals({ margin: '1rem 0 0' })}
+            {priceCals({ margin: '1rem 0 0' }, isMobile ? 'main' : 'big')}
           </MenuItemInfo>
           <MenuItemDetails>
             {hasTagsAllergens && (

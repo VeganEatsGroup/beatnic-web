@@ -96,7 +96,7 @@ const MenuItemFooterDefaultButton = styled.div`
     padding: 0;
     height: 5rem;
     @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
-      height: 4rem;
+      height: 4.4rem;
     }
   }
 `

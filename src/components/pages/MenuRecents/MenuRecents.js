@@ -1,5 +1,6 @@
 import { useContext, useEffect, useMemo } from 'react'
 import styled from '@emotion/styled'
+import { useTheme } from '@emotion/react'
 import { isMobile } from 'react-device-detect'
 import { useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
@@ -29,10 +30,9 @@ const MenuRecentsView = styled.div`
 const MenuRecents = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { categories, soldOut, siteTitle, displaySettings } =
-    useContext(MenuContext)
-  const { itemsTwoPerRowMobile: showTwo } = displaySettings
-  const isSimple = isMobile && showTwo ? true : false
+  const { categories, soldOut, siteTitle } = useContext(MenuContext)
+  const { items } = useTheme()
+  const isSimple = isMobile && items.mobile.perRow > 1 ? true : false
   const menuSlug = useSelector(selectMenuSlug)
   const { auth } = useSelector(selectCustomer)
   const hasCustomer = auth ? true : false
@@ -82,7 +82,7 @@ const MenuRecents = () => {
               {showLoading ? (
                 <Loading />
               ) : (
-                <MenuItems perRow={showTwo ? 2 : 1}>
+                <MenuItems>
                   {recents.map((item, index) => (
                     <MenuItem
                       key={`${item.id}-${index}`}

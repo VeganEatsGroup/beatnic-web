@@ -43,7 +43,7 @@ const MenuItemGroupHeaderAlt = ({ group }) => {
   const { modifierGroupDescription: showDesc } = useSelector(
     selectDisplaySettings
   )
-  const displayDescription = showDesc && group.description.length > 0
+  const displayDescription = showDesc && group.description ? true : false
 
   return (
     <MenuItemGroupHeaderAltView>

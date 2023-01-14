@@ -9,10 +9,15 @@ import {
   showNotification,
 } from '@open-tender/redux'
 import { useBuilder, useOrderItem } from '@open-tender/hooks'
-import { ButtonStyled, CardMenuItem } from '@open-tender/components'
+import { ButtonStyled } from '@open-tender/components'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectDisplaySettings } from '../slices'
-import { MenuItemButton, MenuItemOverlay, MenuItemTagAlert } from '.'
+import {
+  CardMenuItem,
+  MenuItemButton,
+  MenuItemOverlay,
+  MenuItemTagAlert,
+} from '.'
 
 const UpsellItemView = styled(CardMenuItem)`
   position: relative;

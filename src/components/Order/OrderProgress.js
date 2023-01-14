@@ -43,7 +43,8 @@ const OrderProgressPointCheck = styled.div`
   span {
     width: 1.4rem;
     height: 1.4rem;
-    margin: 0 0 0.1rem;
+    margin: 0 0 0;
+    font-size: 0.1rem;
     color: ${(props) => props.theme.bgColors.primary};
   }
 `

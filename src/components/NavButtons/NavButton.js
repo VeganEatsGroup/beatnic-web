@@ -45,8 +45,15 @@ const NavButtonView = styled('button')`
     background-color: ${(props) =>
       props.theme.buttons.colors.largeHover.bgColor};
     @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
-      border-color: ${(props) => props.theme.border.color};
-      background-color: transparent;
+      ${(props) =>
+        !props.isButton
+          ? `
+      border-color: ${props.theme.border.color};
+      background-color: transparent;`
+          : `
+      border-color: ${props.theme.buttons.colors.large.borderColor};
+      background-color: ${props.theme.buttons.colors.large.bgColor};
+      `}
     }
   }
 

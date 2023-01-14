@@ -22,7 +22,7 @@ import {
   HeaderDefault,
   PageContainer,
 } from '../..'
-import { cardIconMap } from '../../../assets/cardIcons'
+import { cardIconsMap } from '../../cardIcons'
 
 const recaptchaKey = process.env.REACT_APP_RECAPTCHA_KEY
 
@@ -78,7 +78,7 @@ const Donations = () => {
                 loading={loading}
                 error={error}
                 recaptchaKey={includeRecaptcha ? recaptchaKey : null}
-                cardIconMap={cardIconMap}
+                cardIconMap={cardIconsMap}
               />
             </FormWrapper>
             {success && (

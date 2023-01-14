@@ -7,15 +7,13 @@ import { selectCurrentCategory, selectMenuSlug } from '@open-tender/redux'
 import { slugify } from '@open-tender/js'
 import { Content, Main, ScreenreaderTitle } from '../..'
 import { MenuHeader, MenuCategory } from '../Menu'
-// import CategoryNav from './CategoryNav'
 import { MenuContext } from '../Menu/Menu'
-import CategoryBrowse from './CategoryBrowse'
+import CategorySwitch from './CategorySwitch'
 
 const MenuCategoryView = styled.div`
   margin-top: ${(props) => props.theme.layout.navHeight};
   @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
-    // margin-top: ${(props) => props.theme.layout.navHeightMobile};
-    margin-top: 0;
+    margin-top: ${(props) => props.theme.layout.navHeightMobile};
   }
 `
 
@@ -43,7 +41,7 @@ const Category = () => {
         <MenuHeader backPath={menuSlug} />
         <Main>
           <ScreenreaderTitle>{category.name}</ScreenreaderTitle>
-          <CategoryBrowse />
+          <CategorySwitch />
           {/* {navItems.length > 0 && <CategoryNav items={navItems} />} */}
           <MenuCategoryView>
             <MenuCategory category={category} />

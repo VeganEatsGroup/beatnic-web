@@ -42,7 +42,7 @@ const MenuItemContent = styled.div`
 const MenuItemInfo = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
 
   .compact & {
     @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
@@ -67,8 +67,19 @@ const MenuItemInfo = styled.div`
 const MenuItemName = styled(Heading)`
   display: block;
   flex: 1 1 auto;
-  padding: 0 0.5rem 0 0;
+  padding: 0 1rem 0 0;
   font-size: ${(props) => props.theme.fonts.sizes.big};
+  ${(props) =>
+    props.theme.cards.menuItem.overrideFontColors
+      ? `color: ${props.theme.cards.menuItem.titleColor};  font-size: ${props.theme.cards.menuItem.titleSize};`
+      : ''};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    ${(props) =>
+      props.theme.cards.menuItem.overrideFontColors
+        ? `font-size: ${props.theme.cards.menuItem.titleSizeMobile};`
+        : ''};
+  }
 
   .compact & {
     @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
@@ -90,10 +101,13 @@ const MenuItemPriceCals = styled.div`
   flex-grow: 0;
   flex-shrink: 0;
   text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 
   .compact & {
     @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
-      margin: 0.1rem 0 0;
+      margin: 0.3rem 0 0;
       text-align: left;
     }
   }
@@ -102,14 +116,38 @@ const MenuItemPriceCals = styled.div`
     width: 100%;
     margin: 0.4rem 0 0;
     text-align: center;
+    justify-content: center;
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
       margin: 0.1rem 0 0;
     }
   }
 `
 
+const MenuItemPriceSep = styled.span`
+  display: block;
+  width: 8px;
+  height: 1px;
+  margin: 0 3px;
+  background-color: ${(props) => props.theme.fonts.body.color};
+  ${(props) =>
+    props.theme.cards.menuItem.overrideFontColors
+      ? `background-color: ${props.theme.cards.menuItem.textColor};`
+      : ''};
+`
+
 const MenuItemPrice = styled(Heading)`
-  font-size: ${(props) => props.theme.fonts.sizes.small};
+  font-size: ${(props) => props.theme.fonts.sizes.big};
+  ${(props) =>
+    props.theme.cards.menuItem.overrideFontColors
+      ? `color: ${props.theme.cards.menuItem.priceColor}; font-size: ${props.theme.cards.menuItem.priceSize};`
+      : ''};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    ${(props) =>
+      props.theme.cards.menuItem.overrideFontColors
+        ? `font-size: ${props.theme.cards.menuItem.priceSizeMobile};`
+        : ''};
+  }
 
   .compact & {
     @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
@@ -118,14 +156,26 @@ const MenuItemPrice = styled(Heading)`
   }
 
   .centered & {
+    font-size: ${(props) => props.theme.fonts.sizes.main};
     @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
       font-size: ${(props) => props.theme.fonts.sizes.xSmall};
     }
   }
 `
 
-const MenuItemCals = styled(Body)`
+const MenuItemCals = styled(Heading)`
   font-size: ${(props) => props.theme.fonts.sizes.small};
+  ${(props) =>
+    props.theme.cards.menuItem.overrideFontColors
+      ? `color: ${props.theme.cards.menuItem.caloriesColor}; font-size: ${props.theme.cards.menuItem.priceSize};`
+      : ''};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+    ${(props) =>
+      props.theme.cards.menuItem.overrideFontColors
+        ? `font-size: ${props.theme.cards.menuItem.priceSizeMobile};`
+        : ''};
+  }
 
   .compact & {
     @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
@@ -168,6 +218,10 @@ const MenuItemTagsAllergens = styled.div`
 
 const MenuItemTag = styled(Preface)`
   font-size: ${(props) => props.theme.fonts.sizes.xxSmall};
+  ${(props) =>
+    props.theme.cards.menuItem.overrideFontColors
+      ? `color: ${props.theme.cards.menuItem.textColor};`
+      : ''};
 `
 
 const MenuItemAllergen = styled(Preface)`
@@ -179,6 +233,10 @@ const MenuItemDescription = styled(Body)`
   display: block;
   margin: 0.8rem 0 0;
   font-size: ${(props) => props.theme.fonts.sizes.small};
+  ${(props) =>
+    props.theme.cards.menuItem.overrideFontColors
+      ? `color: ${props.theme.cards.menuItem.textColor};`
+      : ''};
 
   .compact & {
     @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
@@ -219,7 +277,9 @@ const MenuItemButton = ({
             {price && price !== '$0.00' ? (
               <MenuItemPriceCals>
                 {price ? <MenuItemPrice>{price}</MenuItemPrice> : null}
-                {cals ? <MenuItemCals> &mdash; {cals} Cal</MenuItemCals> : null}
+                {/* {price && cals ? <span> &mdash; </span> : null} */}
+                {price && cals ? <MenuItemPriceSep /> : null}
+                {cals ? <MenuItemCals>{cals} Cal</MenuItemCals> : null}
               </MenuItemPriceCals>
             ) : null}
           </MenuItemInfo>

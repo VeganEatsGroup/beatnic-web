@@ -10,6 +10,7 @@ import ButtonText from './ButtonText'
 import Card from './Card'
 import CartButton from './CartButton'
 import CartItem from './CartItem'
+import CardMenuItem from './CardMenuItem'
 import Collapsible from './Collapsible'
 import Content from './Content'
 import CommunicationPrefs from './CommunicationPrefs'
@@ -128,6 +129,7 @@ export {
   Card,
   CartButton,
   CartItem,
+  CardMenuItem,
   CommunicationPrefs,
   Collapsible,
   Container,

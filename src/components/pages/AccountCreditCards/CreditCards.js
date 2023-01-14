@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from '@emotion/styled'
 import propTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import {
@@ -7,9 +8,8 @@ import {
 } from '@open-tender/redux'
 import { Checkmark, ButtonLink, Preface } from '@open-tender/components'
 
-import { cardIconMap } from '../../../assets/cardIcons'
+import { cardIconsMap } from '../../cardIcons'
 import { LinkSeparator, Row } from '../..'
-import styled from '@emotion/styled'
 
 const CreditCardIcon = styled('span')`
   display: block;
@@ -39,10 +39,7 @@ const CreditCards = ({ creditCards, isLoading, showDefault = true }) => {
           key={creditCard.customer_card_id}
           icon={
             <CreditCardIcon>
-              <img
-                src={cardIconMap[creditCard.card_type]}
-                alt={creditCard.card_type_name}
-              />
+              {cardIconsMap[creditCard.card_type]}
             </CreditCardIcon>
           }
           content={

@@ -46,7 +46,7 @@ const SeeMoreLinkText = styled(Heading)`
 
 const SeeMoreLinkArrow = styled.div`
   margin: 0 0 0 1.5rem;
-  display: block;
+  display: flex;
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
     display: none;
   }
@@ -60,7 +60,7 @@ const SeeMoreLinkChevron = styled.span`
   margin: 0.1rem -0.5rem 0 0;
   color: ${(props) => props.theme.colors.primary};
   @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
-    display: block;
+    display: flex;
   }
 `
 

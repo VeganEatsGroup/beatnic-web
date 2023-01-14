@@ -75,7 +75,7 @@ const UpsellItems = styled.div`
 
 const UpsellItemsWrapper = styled.div`
   flex: ${(props) => (props.count >= 4 ? '1' : '0')} 0 31rem;
-  padding: 1.5rem 0;
+  padding: 3rem 0;
   margin-right: ${(props) => props.theme.layout.padding};
   @media (max-width: 1390px) {
     flex: 0 0 31rem;

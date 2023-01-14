@@ -39,7 +39,7 @@ const MenuNew = () => {
   const { menuHero, menuHeroMobile } = useSelector(selectDisplaySettings)
   const showHero = isMobile ? menuHeroMobile : menuHero
   const imageUrl = showHero ? (isMobile ? mobile : background) : null
-  const heroHeight = isMobile ? '24rem' : '36rem'
+  const heroHeight = isMobile ? '24rem' : '44rem'
   const isRcs = revenueCenters && revenueCenters.length ? true : false
 
   return (

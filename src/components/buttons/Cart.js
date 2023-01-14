@@ -60,9 +60,14 @@ const CartCount = styled.div`
   height: 1.7rem;
   border-radius: 1.2rem;
   padding-bottom: 0.1rem;
-  font-size: ${(props) => props.theme.fonts.sizes.xxSmall};
   color: ${(props) => props.theme.counts.alerts.color};
   background-color: ${(props) => props.theme.counts.alerts.bgColor};
+  font-size: 1rem;
+  // font-size: ${(props) => props.theme.fonts.sizes.xxSmall};
+  // font-size: ${(props) => props.theme.counts.alerts.fontSize};
+  // @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+  //   font-size: ${(props) => props.theme.counts.alerts.fontSizeMobile};
+  // }
 `
 
 const Cart = () => {

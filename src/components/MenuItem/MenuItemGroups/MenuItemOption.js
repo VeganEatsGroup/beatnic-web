@@ -22,6 +22,7 @@ import {
   Quantity,
 } from '../..'
 import MenuItemRadio from './MenuItemRadio'
+import MenuItemPizza from './MenuItemPizza/MenuItemPizza'
 
 const MenuItemOptionView = styled.div`
   width: 100%;
@@ -200,8 +201,8 @@ const MenuItemOption = ({
     decrementOption(group.id, option.id)
   }
 
-  const adjust = (quantity) => {
-    setOptionQuantity(group.id, option.id, quantity)
+  const adjust = (quantity, nested) => {
+    setOptionQuantity(group.id, option.id, quantity, nested)
   }
 
   const toggleShowInfo = () => {
@@ -265,6 +266,8 @@ const MenuItemOption = ({
         <MenuItemOptionQuantity>
           {isSoldOut ? (
             <MenuItemOptionSoldOut>Out of stock</MenuItemOptionSoldOut>
+          ) : group.isPizza && option.groups ? (
+            <MenuItemPizza groups={option.groups} adjust={adjust} />
           ) : isRadio ? (
             <MenuItemRadio option={option} handler={toggle} />
           ) : (

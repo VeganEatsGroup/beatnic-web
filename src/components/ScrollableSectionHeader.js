@@ -7,7 +7,7 @@ import SeeMoreLink from './SeeMoreLink'
 const ScrollableSectionHeaderView = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: baseline;
   width: 100%;
   padding: 0 ${(props) => props.theme.layout.padding};
   margin: 0 0 1.5rem;

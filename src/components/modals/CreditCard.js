@@ -9,8 +9,8 @@ import {
 import { CreditCardForm } from '@open-tender/components'
 
 import { closeModal, selectRecaptcha } from '../../slices'
+import { cardIconsMap } from '../cardIcons'
 import { ModalContent, ModalView } from '..'
-import { cardIconMap } from '../../assets/cardIcons'
 
 const recaptchaKey = process.env.REACT_APP_RECAPTCHA_KEY
 
@@ -53,7 +53,7 @@ const CreditCard = ({ windowRef, callback, revenue_center_id }) => {
           addCard={addCard}
           callback={addCallback}
           recaptchaKey={includeRecaptcha ? recaptchaKey : null}
-          cardIconMap={cardIconMap}
+          cardIconMap={cardIconsMap}
           revenue_center_id={revenue_center_id}
         />
       </ModalContent>

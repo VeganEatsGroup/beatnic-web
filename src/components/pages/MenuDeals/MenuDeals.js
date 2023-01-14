@@ -1,6 +1,5 @@
 import { useContext, useEffect } from 'react'
 import styled from '@emotion/styled'
-import { isMobile } from 'react-device-detect'
 import { useNavigate } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { useSelector } from 'react-redux'
@@ -18,10 +17,7 @@ const MenuDealsView = styled.div`
 
 const MenuDeals = () => {
   const navigate = useNavigate()
-  const { deals, isLoading, siteTitle, displaySettings } =
-    useContext(MenuContext)
-  const { itemsTwoPerRowMobile: showTwo } = displaySettings
-  const perRow = isMobile && showTwo ? 2 : 1
+  const { deals, isLoading, siteTitle } = useContext(MenuContext)
   const menuSlug = useSelector(selectMenuSlug)
   const shouldRedirect = !isLoading && deals.length === 0
 
@@ -48,7 +44,7 @@ const MenuDeals = () => {
               {isLoading ? (
                 <Loading />
               ) : (
-                <MenuItems perRow={perRow}>
+                <MenuItems>
                   {deals.map((item) => (
                     <Reward key={item.discount_id} item={item} />
                   ))}

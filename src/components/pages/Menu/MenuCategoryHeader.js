@@ -3,9 +3,11 @@ import propTypes from 'prop-types'
 import { Body, Heading } from '@open-tender/components'
 
 const MenuCategoryHeaderView = styled.div`
-  margin: 0 0 3rem;
-  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
-    margin: 0 0 ${(props) => props.theme.layout.marginMobile};
+  margin: 0 auto 3rem;
+  max-width: ${(props) => props.theme.items.desktop.containerMaxWidth};
+  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
+    margin: 0 auto ${(props) => props.theme.layout.marginMobile};
+    max-width: ${(props) => props.theme.items.mobile.containerMaxWidth};
   }
 `
 
@@ -13,7 +15,7 @@ const MenuCategoryHeaderTitle = styled(Heading)`
   margin: 0 0 0 -0.1rem;
   font-size: ${(props) =>
     props.theme.fonts.sizes[props.isChild ? 'xBig' : 'xxBig']};
-  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     font-size: ${(props) =>
       props.theme.fonts.sizes[props.isChild ? 'big' : 'xBig']};
   }
@@ -21,7 +23,7 @@ const MenuCategoryHeaderTitle = styled(Heading)`
 
 const MenuCategoryHeaderSubtitle = styled(Body)`
   margin: 1rem 0 0;
-  @media (max-width: ${(props) => props.theme.breakpoints.mobile}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.tablet}) {
     margin: 0.5rem 0 0;
     font-size: ${(props) => props.theme.fonts.sizes.small};
   }
