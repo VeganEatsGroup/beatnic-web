@@ -1,6 +1,6 @@
 {
   "name": "beatnic-web",
-  "version": "4.7.1",
+  "version": "4.7.2",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.6.0",
@@ -8,7 +8,7 @@
     "@google-pay/button-react": "^3.0.0",
     "@open-tender/components": "^5.1.5",
     "@open-tender/hooks": "^1.1.0",
-    "@open-tender/js": "^2.3.0",
+    "@open-tender/js": "^2.3.1",
     "@open-tender/redux": "^3.0.15",
     "@reduxjs/toolkit": "^1.6.2",
     "@sentry/react": "^7.11.1",
