@@ -47,7 +47,7 @@ const makeDetailsConfig = (required, displayed, allowTaxExempt) => {
       required: false,
     },
     notes: {
-      label: `Notes${!required.includes('notes') ? ' (optional)' : ''}`,
+      label: 'Notes (delivery notes only, not special requests)',
       included: displayed.includes('notes') || required.includes('notes'),
       required: required.includes('notes'),
     },
