@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Geolocation from './Geolocation'
 import {
-  About,
+  // About,
   Accessibility,
   AccountAddresses,
   Account,
@@ -13,7 +13,7 @@ import {
   AccountSettings,
   Category,
   Catering,
-  CateringSite,
+  // CateringSite,
   Checkout,
   CheckoutGuest,
   CheckoutSignIn,
@@ -33,14 +33,14 @@ import {
   HouseAccounts,
   Item,
   LevelUp,
-  Locations,
+  // Locations,
   Loyalty,
   Menu,
   MenuDeals,
   MenuFavorites,
   MenuFeatured,
   MenuRecents,
-  MenuSite,
+  // MenuSite,
   NotFound,
   Order,
   OrderHistory,
@@ -75,12 +75,12 @@ const AppRoutes = () => {
       <Route path="verify" element={<VerifyAccount />} />
       <Route path="signup" element={<SignUp />} />
       <Route path="guest" element={<Guest />} />
-      <Route element={<Geolocation />}>
+      {/* <Route element={<Geolocation />}>
         <Route path="menu" element={<MenuSite />} />
         <Route path="restaurants" element={<Locations />} />
         <Route path="catering" element={<CateringSite />} />
         <Route path="about" element={<About />} />
-      </Route>
+      </Route> */}
       <Route element={<Geolocation />}>
         <Route path="order-type" element={<OrderType />} />
         <Route path="catering-address" element={<Catering />} />
